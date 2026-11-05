@@ -4,6 +4,7 @@ import { renderTrafficLightBadge, renderSidebarMiniWidget, formatContextStatusRe
 import { scanPrunableTargets, executePruning } from "./pruner-engine.js";
 import { formatInjectionsReport } from "./injections-inspector.js";
 import { getScannerLensPayload } from "./scanner-hook.js";
+import { mountSidebarSlot, createZeroChatWidget } from "./sidebar-dock.js";
 
 export default function activate(api: ExtensionAPI): void {
   // 1. Rastreo pasivo de invocación de herramientas para calcular el ROI
@@ -72,4 +73,44 @@ export default function activate(api: ExtensionAPI): void {
     getScannerPayload: (ctx: ExtensionContext) => getScannerLensPayload(ctx),
     pruneSafe: (ctx: ExtensionContext) => executePruning(ctx)
   };
+
+  // 4. Montaje en Sidebar Dock (Invariante Zero-Chat estricta)
+  api.on("session_start", (_event: any, ctx: ExtensionContext) => {
+    if (!ctx?.hasUI || typeof ctx.ui?.setWidget !== "function") return;
+
+    try {
+      ctx.ui.setWidget(
+        "context-lens",
+        createZeroChatWidget((tui: any, _theme: any) => {
+          try {
+            mountSidebarSlot(tui, {
+              id: "context-lens",
+              title: "🔍 Context Lens",
+              order: () => 35, // Se ubica armoniosamente en el panel inferior del sidebar
+              enabled: () => true,
+              render: (width: number) => {
+                const breakdown = calculateContextBreakdown(ctx);
+                const mini = renderSidebarMiniWidget(breakdown, width);
+                return mini ? [mini] : [];
+              },
+              digest: () => {
+                const b = calculateContextBreakdown(ctx);
+                return `${b.usedPercent}-${b.trafficStatus}`;
+              },
+              handleMouse: (evt: any) => {
+                if (evt?.type === "click") {
+                  const b = calculateContextBreakdown(ctx);
+                  ctx.ui?.notify(formatContextStatusReport(b), b.trafficStatus === "red" ? "warning" : "info");
+                  return { handled: true };
+                }
+                return undefined;
+              }
+            });
+          } catch (err) {
+            console.error("[gentle-context-lens] Error montando slot en sidebar:", err);
+          }
+        })
+      );
+    } catch {}
+  });
 }

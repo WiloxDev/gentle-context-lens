@@ -27,6 +27,8 @@ Observabilidad activa y poda quirúrgica del contexto para **Gentle Shell** y **
 
 ## 📦 Instalación
 
+> 🤖 **Para Instalación Asistida por AI (Claude, Pi, Cursor):** Consulta estrictamente [AI_INSTALL.md](AI_INSTALL.md) para garantizar el cumplimiento de la Invariante Zero-Chat y el anclaje limpio en el Sidebar Dock.
+
 ### En Gentle Shell
 ```bash
 gentle-shell install git:github.com/WiloxDev/gentle-context-lens
