@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { classifyEntryRisk } from "../src/safety-matrix.js";
-import { renderTrafficLightBadge } from "../src/hud-renderer.js";
+import { classifyEntryRisk } from "../src/safety-matrix.ts";
+import { renderTrafficLightBadge } from "../src/hud-renderer.ts";
 
 test("classifyEntryRisk protege turnos recientes y system prompts", () => {
   const systemCheck = classifyEntryRisk("system", "Eres un asistente...", 0, 10);
