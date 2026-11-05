@@ -1,0 +1,30 @@
+name: CI & Unit Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    name: TypeCheck & Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Dependencies
+        run: npm install --no-package-lock
+
+      - name: Run TypeScript Strict TypeCheck
+        run: npx tsc --noEmit
+
+      - name: Run Native Unit Tests
+        run: node --experimental-strip-types test/pruner.test.ts
