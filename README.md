@@ -5,13 +5,13 @@
 # Gentle Context Lens
 
 [![Gentle Hub](https://img.shields.io/badge/Gentle%20Hub-Extension-F095C8?style=for-the-badge)](https://gentlemanprogramming.com/gentle-hub/)
-[![Discord](https://img.shields.io/badge/Discord-Apoyo%20y%20Soporte-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://bit.ly/48zTJUo)
+[![Discord](https://img.shields.io/badge/Discord-Feedback%20%26%20Sugerencias-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://bit.ly/48zTJUo)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 [![Pi native](https://img.shields.io/badge/Pi-native-orange?style=for-the-badge)](https://pi.dev)
 
 Observabilidad activa y poda quirúrgica del contexto para **Gentle Shell** y **TelarDev**: convierte la ventana de contexto de un visor pasivo a un **optimizador activo de tokens con cero amnesia**.
 
-> 💬 **Comunidad y Soporte:** `wilox2` · [Servidor de Discord Oficial](https://bit.ly/48zTJUo)
+> 💬 **Feedback & Sugerencias:** `wilox2` · [Servidor de Discord Oficial](https://bit.ly/48zTJUo)
 
 ---
 
