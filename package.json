@@ -19,7 +19,8 @@
   "pi": {
     "extensions": [
       "./src/index.ts"
-    ]
+    ],
+    "image": "https://raw.githubusercontent.com/WiloxDev/gentle-context-lens/main/assets/logo.png"
   },
   "files": [
     "src",

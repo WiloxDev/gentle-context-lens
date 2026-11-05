@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" width="220" alt="Gentle Context Lens">
+</p>
+
 # Gentle Context Lens
 
 [![Gentle Hub](https://img.shields.io/badge/Gentle%20Hub-Extension-F095C8?style=for-the-badge)](https://gentlemanprogramming.com/gentle-hub/)
