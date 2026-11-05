@@ -1,0 +1,50 @@
+{
+  "name": "gentle-context-lens",
+  "version": "1.0.0",
+  "description": "Observabilidad activa y poda quirúrgica del contexto para Gentle Shell y TelarDev: de visor pasivo a optimizador de tokens con cero amnesia.",
+  "type": "module",
+  "main": "./src/index.ts",
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "gentle-shell-package",
+    "gentle-shell-extension",
+    "gentle-hub-project",
+    "context-lens",
+    "telardev",
+    "ai"
+  ],
+  "author": "Wilox",
+  "license": "MIT",
+  "pi": {
+    "extensions": [
+      "./src/index.ts"
+    ]
+  },
+  "files": [
+    "src",
+    "assets",
+    "README.md",
+    "LICENSE",
+    "package.json"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "npx tsx test/pruner.test.ts"
+  },
+  "peerDependencies": {
+    "@earendil-works/pi-ai": ">=0.86.0",
+    "@earendil-works/pi-coding-agent": ">=0.86.0",
+    "@earendil-works/pi-tui": ">=0.86.0"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-ai": "^1.4.0",
+    "@earendil-works/pi-coding-agent": "^1.4.0",
+    "@earendil-works/pi-tui": "^1.4.0",
+    "@types/node": "^24.3.0",
+    "typescript": "^6.0.3"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
