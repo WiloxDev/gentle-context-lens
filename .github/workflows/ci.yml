@@ -28,3 +28,29 @@ jobs:
 
       - name: Run Native Unit Tests
         run: node --experimental-strip-types test/pruner.test.ts
+
+  # Consumer-driven contract: este repo NO copia la suite del dock. Toma la suite
+  # canónica de Wellness-Reloj-pi, le mete SU PROPIA copia de sidebar-dock y exige
+  # que la cumpla. Si las dos copias divergen en el guardia de idempotencia, falla aquí.
+  # Equivalente local: ../Wellness-Reloj-pi/scripts/contract-gate.sh src/sidebar-dock.ts
+  contract:
+    name: Sidebar Dock Contract (suite canónica)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Clonar la suite canónica del dock
+        run: git clone --depth 1 https://github.com/WiloxDev/Wellness-Reloj-pi.git ../wellness
+
+      - name: Sustituir el dock de la suite por la copia de este repo
+        run: cp src/sidebar-dock.ts ../wellness/src/sidebar-dock.ts
+
+      - name: Ejecutar la suite canónica contra esta copia
+        run: cd ../wellness && npm ci && npm test
